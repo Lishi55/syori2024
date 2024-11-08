@@ -6,10 +6,9 @@
 char moji[50];
 
 typedef struct{
-char alpha[5];
+char alpha[1];
 short count;
 } ans;
-
 int nara(const void * n1, const void * n2)
 {
 	if (((ans *)n1)->count > ((ans *)n2)->count)
@@ -27,9 +26,11 @@ int nara(const void * n1, const void * n2)
 }
 
 int main(void){
-	ans aaa[] = {{"a", 0}, {"b", 0}, {"c", 0},{"d", 0},{"e", 0},{"f", 0},{"g", 0},{"h", 0},{"i", 0},{"j", 0},{"k", 0},
-	{"l", 0},{"m", 0},{"n", 0},{"o", 0},{"p", 0},{"q", 0},{"r", 0},{"s", 0},{"t", 0},{"u", 0},
-	{"v", 0},{"w", 0},{"x", 0},{"y", 0},{"z", 0},};
+	ans aaa[25];
+	for(int i=0; i <26; i++){	
+	        aaa[i].alpha[0] ='a' + i;
+		aaa[i].count = 0;
+	}
 	size_t aaaSize = sizeof(aaa) / sizeof(aaa[0]);
         scanf("%s",moji);
         for(int i = 0; i < 51;i++){
@@ -43,7 +44,7 @@ int main(void){
         }
 	qsort(aaa, aaaSize, sizeof(ans), nara);
         for(int j = 0; j <26;j++){
-           printf("%s,%d\n",aaa[j].alpha,aaa[j].count);
+           printf("%c,%d\n",aaa[j].alpha[0],aaa[j].count);
         }
         printf("\n");
         return 0;
