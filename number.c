@@ -1,12 +1,22 @@
 #include<ctype.h>
 #include<stdio.h>
 
-char moji[50];
+char moji[1000];
 int main(void){
-        scanf("%s",moji);
+	FILE * fp = NULL;
 
-        for(int i = 0; i < 50;i++){
-		if(isalpha(moji[i]))
+	fp = fopen("test.txt", "r");
+
+	for(int i = 0; i <1001;i++){
+	moji[i] = fgetc(fp);
+	}
+
+        for(int i = 0; i < 1001;i++){
+	 if(isalpha(moji[i]))
+		printf("%c",moji[i]);
+	else if(moji[i] == 10)
+	        printf("%c",moji[i]);
+	else if(moji[i] == 17)
 		printf("%c",moji[i]);
 	}
 	printf("\n");
