@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include <string.h>
 
-char moji[1000];
+char moji[10000];
 
 typedef struct{
 char alpha[5];
@@ -27,22 +27,28 @@ int nara(const void * n1, const void * n2)
 }
 
 int main(void){
-	ans aaa[] = {{"a", 0}, {"b", 0}, {"c", 0},{"d", 0},{"e", 0},{"f", 0},{"g", 0},{"h", 0},{"i", 0},{"j", 0},{"k", 0},
-	{"l", 0},{"m", 0},{"n", 0},{"o", 0},{"p", 0},{"q", 0},{"r", 0},{"s", 0},{"t", 0},{"u", 0},
-	{"v", 0},{"w", 0},{"x", 0},{"y", 0},{"z", 0},};
+	ans aaa[51];
+	for(int i = 0; i < 26; i++){	
+	        aaa[i].alpha[0] ='a' + i;
+		aaa[i].count = 0;
+	}
+	for(int i = 26; i < 52; i++){
+		aaa[i].alpha[0] ='A' + (i - 26);
+                aaa[i].count = 0;
+	}
 	size_t aaaSize = sizeof(aaa) / sizeof(aaa[0]);
         
         FILE * fp = NULL;
 
 	fp = fopen("test.txt", "r");
 
-	for(int i = 0; i <1001;i++){
+	for(int i = 0; i <10001;i++){
 	moji[i] = fgetc(fp);
 	}
 
-        for(int i = 0; i < 1001;i++){
+        for(int i = 0; i < 10001;i++){
                 if(isalpha(moji[i])){
-                for(int j=0; j <26; j++){
+                for(int j=0; j <51; j++){
                   if(moji[i] == aaa[j].alpha[0]){
                   aaa[j].count++;
                   }
@@ -50,8 +56,8 @@ int main(void){
                 }
         }
 	qsort(aaa, aaaSize, sizeof(ans), nara);
-        for(int j = 0; j <26;j++){
-           printf("%s,%d\n",aaa[j].alpha,aaa[j].count);
+        for(int j = 0; j <52;j++){
+           printf("%c,%d\n",aaa[j].alpha[0],aaa[j].count);
         }
         printf("\n");
         return 0;
