@@ -27,7 +27,7 @@ int nara(const void * n1, const void * n2)
 }
 
 int main(void){
-	ans aaa[51];
+	ans aaa[52];
 	for(int i = 0; i < 26; i++){	
 	        aaa[i].alpha[0] ='a' + i;
 		aaa[i].count = 0;
