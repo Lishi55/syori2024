@@ -27,14 +27,12 @@ int nara(const void * n1, const void * n2)
 
 int main(void){
 	int m = 0;
-	ans aaa[500];
+	ans aaa[700];
 	for(int i=0; i <26; i++){
-	   for(int j; j < 27; j++){
+	   for(int j = 0; j < 26; j++){
 		aaa[m].alpha[0] ='a' + i;
 	      if(j < 26){
 		aaa[m].alpha[1] ='a' + j;
-	      }else if(j == 26){
-	        aaa[m].alpha[1] = 20;
 	      }
 	      aaa[m].count = 0;
 	      m++;
