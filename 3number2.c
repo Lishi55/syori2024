@@ -90,7 +90,7 @@ int main(void){
 	     }
 	      if(h == 2){
                 g = M+1;
-              }
+              }//aa
             }
 	   }
 	   }
