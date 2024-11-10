@@ -33,7 +33,7 @@ int main(void){
            if(isalpha(moji[i])){
              	   bun[j] = moji[i];
 	   j++;
-	   }else if(moji[i] == 20){
+	   }else if(moji[i] == ' '){
 		    bun[j] = moji[i];
 	   j++;
 	   }else if(moji[i] == 10){
