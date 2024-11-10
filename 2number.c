@@ -1,10 +1,11 @@
-#include<ctype.h>
-#include<stdio.h>
-#include<stdlib.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-char moji[50];
-char bun[50];
+char moji[10000];
+char bun[10000];
 typedef struct{
 char alpha[2];
 short count;
@@ -26,13 +27,18 @@ int nara(const void * n1, const void * n2)
 }
 
 int main(void){
+	FILE*fp;
+
 	int m = 0;
-	ans aaa[700];
+	ans aaa[730];
 	for(int i=0; i <26; i++){
-	   for(int j = 0; j < 26; j++){
+	   for(int j = 0; j < 27; j++){
 		aaa[m].alpha[0] ='a' + i;
 	      if(j < 26){
 		aaa[m].alpha[1] ='a' + j;
+	      }
+	      if(j == 26){
+	        aaa[m].alpha[1] = ' ';
 	      }
 	      aaa[m].count = 0;
 	      m++;
@@ -40,7 +46,7 @@ int main(void){
 	}
 	printf("%c%c\n",aaa[0].alpha[0],aaa[0].alpha[1]);
 	for(int i = 0; i < 26;i++){
-	   aaa[m].alpha[0] = 20;
+	   aaa[m].alpha[0] = ' ';
 	   aaa[m].alpha[1] = 'a' + i;
 	   aaa[m].count = 0;
 	   m++;
@@ -49,19 +55,33 @@ int main(void){
 
 	size_t aaaSize = sizeof(aaa) / sizeof(aaa[0]);
 
-        scanf("%s",moji);
+        fp = fopen("test.txt","r");
+        if(fp == NULL){
+		printf("%s file not open!\n","test.txt");
+		return -1;
+	}
+        int i;
+	while((moji[i] = fgetc(fp)) != EOF){
+	i++;
+	}
+	fclose(fp);
 
-        for(int i = 0;i < 51; i++){
+        for(int i = 0;moji[i] != EOF; i++){
            if(isalpha(moji[i])){
              	   bun[j] = moji[i];
 	   j++;
-	   }else if(moji[i] == 20){
+	   }else if(moji[i] == ' '){
 		    bun[j] = moji[i];
 	   j++;
 	   }
 	}
+
+	for (i=0 ; i < strlen(bun) ; i++){
+	bun[i] = tolower(bun[i]);
+	}
+	
         printf("%s\n",bun);
-	for(int i = 0; i < 51; i++){
+	for(int i = 0; i < strlen(bun); i++){
 		for(int j = 0; j < (m + 1); j++)
                   if(bun[i] == aaa[j].alpha[0]){
 			  if(bun[i + 1] == aaa[j].alpha[1]){
