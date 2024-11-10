@@ -16,7 +16,7 @@ int main(void){
 		printf("%c",moji[i]);
 	else if(moji[i] == 10)
 	        printf("%c",moji[i]);
-	else if(moji[i] == 17)
+	else if(moji[i] == ' ')
 		printf("%c",moji[i]);
 	}
 	printf("\n");
