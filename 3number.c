@@ -29,7 +29,7 @@ int nara(const void * n1, const void * n2)
 int main(void){
 	FILE*fp;
 
-	int m = 0;
+	int m = 0;//aaa
 	ans aaa[19690];
 	for(int i=0; i <26; i++){
 	   for(int j = 0; j < 27; j++){
